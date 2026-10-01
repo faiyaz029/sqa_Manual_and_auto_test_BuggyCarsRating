@@ -1,0 +1,4 @@
+[    1219ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://buggy.justtestit.org/:0
+[   46576ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "new-password"): (More info: https://goo.gl/9p2vKq) %o @ https://buggy.justtestit.org/register:0
+[   46576ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "new-password"): (More info: https://goo.gl/9p2vKq) %o @ https://buggy.justtestit.org/register:0
+[  158901ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://k51qryqov3.execute-api.ap-southeast-2.amazonaws.com/prod/oauth/token:0

@@ -1,0 +1,44 @@
+- generic [ref=f4e2]:
+  - banner [ref=f4e3]:
+    - navigation [ref=f4e4]:
+      - generic [ref=f4e5]:
+        - link "Buggy Rating" [ref=f4e6] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f4e8]:
+          - generic [ref=f4e9]:
+            - textbox "Login" [ref=f4e10]
+            - textbox [ref=f4e11]
+          - button "Login" [ref=f4e12] [cursor=pointer]
+          - link "Register" [ref=f4e13] [cursor=pointer]:
+            - /url: /register
+    - heading "Buggy Cars Rating" [level=1] [ref=f4e18]: BuggyCarsRating
+  - main [ref=f4e22]:
+    - main [ref=f4e23]:
+      - generic [ref=f4e26]:
+        - heading "Register with Buggy Cars Rating" [level=2] [ref=f4e27]
+        - generic [ref=f4e28]:
+          - generic [ref=f4e29]:
+            - generic [ref=f4e30]: Login
+            - textbox "Login" [ref=f4e31]: qa_ui_1769900124
+          - generic [ref=f4e32]:
+            - generic [ref=f4e33]: First Name
+            - textbox "First Name" [ref=f4e34]: Case
+          - generic [ref=f4e35]:
+            - generic [ref=f4e36]: Last Name
+            - textbox "Last Name" [ref=f4e37]: Check
+          - generic [ref=f4e38]:
+            - generic [ref=f4e39]: Password
+            - textbox "Password" [ref=f4e40]: SamplePass1
+          - generic [ref=f4e41]:
+            - generic [ref=f4e42]: Confirm Password
+            - textbox "Confirm Password" [active] [ref=f4e43]: SamplePass1
+          - button "Register" [ref=f4e44] [cursor=pointer]
+          - button "Cancel" [ref=f4e45] [cursor=pointer]
+    - separator [ref=f4e46]
+    - generic [ref=f4e48]:
+      - generic [ref=f4e49]:
+        - link "Facebook" [ref=f4e50] [cursor=pointer]:
+          - /url: https://www.facebook.com
+        - link "Twitter" [ref=f4e52] [cursor=pointer]:
+          - /url: https://www.twitter.com
+      - paragraph [ref=f4e54]: © 2016 Buggy Software, Inc.

@@ -1,0 +1,43 @@
+- generic [ref=f3e2]:
+  - banner [ref=f3e3]:
+    - navigation [ref=f3e4]:
+      - generic [ref=f3e5]:
+        - link "Buggy Rating" [ref=f3e6] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f3e8]:
+          - generic [ref=f3e9]:
+            - generic [ref=f3e57]: Invalid username/password
+            - textbox "Login" [ref=f3e10]: testgmail.com
+            - textbox [ref=f3e11]: InvalidTest!
+          - button "Login" [ref=f3e12] [cursor=pointer]
+          - link "Register" [ref=f3e13] [cursor=pointer]:
+            - /url: /register
+    - heading "Buggy Cars Rating" [level=1] [ref=f3e18]: BuggyCarsRating
+  - main [ref=f3e22]:
+    - main [ref=f3e23]:
+      - generic [ref=f3e35]:
+        - generic [ref=f3e37]:
+          - heading "Popular Make" [level=2] [ref=f3e38]
+          - link [ref=f3e39] [cursor=pointer]:
+            - /url: /make/ckl2phsabijs71623vk0
+            - img "Lamborghini" [ref=f3e40]
+          - heading "Lamborghini (25323 votes)" [level=3] [ref=f3e42]: Lamborghini(25323 votes)
+        - generic [ref=f3e44]:
+          - heading "Popular Model" [level=2] [ref=f3e45]
+          - link [ref=f3e46] [cursor=pointer]:
+            - /url: /model/ckl2phsabijs71623vk0|ckl2phsabijs71623vqg
+            - img "Diablo" [ref=f3e47]
+          - heading "Lamborghini Diablo (10438 votes)" [level=3] [ref=f3e49]: Lamborghini Diablo(10438 votes)
+        - generic [ref=f3e51]:
+          - heading "Overall Rating" [level=2] [ref=f3e52]
+          - link [ref=f3e53] [cursor=pointer]:
+            - /url: /overall
+          - heading "List of all registered models." [level=3] [ref=f3e56]
+    - separator [ref=f3e26]
+    - generic [ref=f3e28]:
+      - generic [ref=f3e29]:
+        - link "Facebook" [ref=f3e30] [cursor=pointer]:
+          - /url: https://www.facebook.com
+        - link "Twitter" [ref=f3e32] [cursor=pointer]:
+          - /url: https://www.twitter.com
+      - paragraph [ref=f3e34]: © 2016 Buggy Software, Inc.

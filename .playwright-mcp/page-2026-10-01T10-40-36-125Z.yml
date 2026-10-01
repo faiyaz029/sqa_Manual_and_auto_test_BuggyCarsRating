@@ -1,0 +1,45 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "Buggy Rating" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e8]:
+          - generic [ref=e9]:
+            - generic [ref=e79]: Invalid username/password
+            - textbox "Login" [ref=e10]: abbh99
+            - textbox [ref=e11]: 9#%jpUT#9yXrpPmfBma
+          - button "Login" [ref=e12] [cursor=pointer]
+          - link "Register" [ref=e13] [cursor=pointer]:
+            - /url: /register
+    - heading "Buggy Cars Rating" [level=1] [ref=e18]: BuggyCarsRating
+  - main [ref=e22]:
+    - main [ref=e23]:
+      - generic [ref=e59]:
+        - heading "Register with Buggy Cars Rating" [level=2] [ref=e60]
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: Login
+            - textbox "Login" [ref=e64]
+          - generic [ref=e65]:
+            - generic [ref=e66]: First Name
+            - textbox "First Name" [ref=e67]
+          - generic [ref=e68]:
+            - generic [ref=e69]: Last Name
+            - textbox "Last Name" [ref=e70]
+          - generic [ref=e71]:
+            - generic [ref=e72]: Password
+            - textbox "Password" [ref=e73]
+          - generic [ref=e74]:
+            - generic [ref=e75]: Confirm Password
+            - textbox "Confirm Password" [ref=e76]
+          - button "Register" [disabled] [ref=e77]
+          - button "Cancel" [ref=e78] [cursor=pointer]
+    - separator [ref=e26]
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - link "Facebook" [ref=e30] [cursor=pointer]:
+          - /url: https://www.facebook.com
+        - link "Twitter" [ref=e32] [cursor=pointer]:
+          - /url: https://www.twitter.com
+      - paragraph [ref=e34]: © 2016 Buggy Software, Inc.

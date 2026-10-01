@@ -1,0 +1,24 @@
+{
+  "name": "sqa_manual_and_auto_test_buggycarsrating",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faiyaz029/sqa_Manual_and_auto_test_BuggyCarsRating.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/faiyaz029/sqa_Manual_and_auto_test_BuggyCarsRating/issues"
+  },
+  "homepage": "https://github.com/faiyaz029/sqa_Manual_and_auto_test_BuggyCarsRating#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.3",
+    "dotenv": "^18.0.5"
+  }
+}

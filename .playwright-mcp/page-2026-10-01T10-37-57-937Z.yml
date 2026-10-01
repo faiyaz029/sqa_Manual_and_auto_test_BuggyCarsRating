@@ -1,0 +1,24 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "Buggy Rating" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e8]:
+          - generic [ref=e9]:
+            - textbox "Login" [ref=e10]
+            - textbox [ref=e11]
+          - button "Login" [ref=e12] [cursor=pointer]
+          - link "Register" [ref=e13] [cursor=pointer]:
+            - /url: /register
+    - heading "Buggy Cars Rating" [level=1] [ref=e18]: BuggyCarsRating
+  - main [ref=e22]:
+    - main [ref=e23]
+    - separator [ref=e26]
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - link "Facebook" [ref=e30] [cursor=pointer]:
+          - /url: https://www.facebook.com
+        - link "Twitter" [ref=e32] [cursor=pointer]:
+          - /url: https://www.twitter.com
+      - paragraph [ref=e34]: © 2016 Buggy Software, Inc.
