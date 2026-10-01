@@ -1,154 +1,95 @@
-# Buggy Cars Rating — Playwright Test Automation
+# Buggy Cars Rating Playwright Tests
 
-Automated end-to-end tests for [Buggy Cars Rating](https://buggy.justtestit.org/), a practice web app with intentionally planted bugs. The project turns bugs found during manual testing into repeatable Playwright tests (TypeScript), with an AI agent (Playwright MCP in VS Code) helping to explore the site and generate test code.
+TypeScript end-to-end tests for the public [Buggy Cars Rating](https://buggy.justtestit.org/) practice application. The suite covers login, session/logout behavior, and registration-form UI. Scenarios are identified by the manual test case IDs `TC-002` through `TC-029`.
 
 ## Manual Testing
 
-Manual test cases, bug logs, and the summary are tracked in this Google Sheet:
+Manual test cases and results are tracked in the [manual testing Google Sheet](https://docs.google.com/spreadsheets/d/1aZ7977LHdiNC6ZeHVLgLp3JD3vC7L_BGbRAbtHt11tQ/edit?gid=647998131#gid=647998131).
 
-**[Manual testing sheet (Google Sheets)](https://docs.google.com/spreadsheets/d/1aZ7977LHdiNC6ZeHVLgLp3JD3vC7L_BGbRAbtHt11tQ/edit?gid=647998131#gid=647998131)**
+## Automated Coverage
 
-The automated tests in this repo are based on the bugs found during that manual pass.
+| Test cases | Coverage | Test file |
+|---|---|---|
+| TC-002 to TC-004 | Navbar login controls, accessible field names, and hover colors | [tests/login.spec.ts](tests/login.spec.ts) |
+| TC-005 to TC-008 | Email-like username validation | [tests/login.spec.ts](tests/login.spec.ts) |
+| TC-009 to TC-014 | Username normalization and password behavior | [tests/login.spec.ts](tests/login.spec.ts) |
+| TC-015 to TC-020 | Required fields, valid login, and invalid-login responses | [tests/login.spec.ts](tests/login.spec.ts) |
+| TC-021 to TC-027 | Cookies, refresh/context persistence, and logout flows | [tests/login.spec.ts](tests/login.spec.ts) |
+| TC-028 to TC-029 | Registration labels and Register button visual states | [tests/register.spec.ts](tests/register.spec.ts) |
 
-## Known Bugs Covered
+## Confirmed Bugs
 
-| ID | Bug | Test file |
-|----|-----|-----------|
-| BUG-01 | Navigation bar is not fixed on scroll | `tests/ui.spec.ts` |
-| BUG-02 | No authentication/session cookie after login | `tests/auth.spec.ts` |
-| BUG-03 | Email validation missing on Register form | `tests/register.spec.ts` |
-| BUG-04 | "Show Password" icon missing (Chrome/Firefox) | `tests/login.spec.ts` |
-| BUG-05 | Register form: Age accepts 0 and shows "Unknown Error" | `tests/register.spec.ts` |
-| BUG-06 | Register form: Phone accepts more than 10 digits | `tests/register.spec.ts` |
-| BUG-07 | Logout not working (Overall rating banner) | `tests/auth.spec.ts` |
-| BUG-08 | After login, refreshing the page shows the login form again | `tests/auth.spec.ts` |
-| BUG-09 | Overall rating banner verification | `tests/rating.spec.ts` |
+Known defects are asserted as expected behavior and marked with Playwright's `test.fail()`. Such tests appear as passing while the defect remains; if the assertion unexpectedly passes after a fix, Playwright reports it as an unexpected pass.
 
-Confirmed bugs are written to assert the **expected (correct)** behaviour and are marked with `test.fail()`, so the suite stays green while the bug exists and flags it as "unexpectedly passing" once it is fixed. Detailed write-ups live in [`bug-reports/`](./bug-reports).
+| ID | Observed defect | Test |
+|---|---|---|
+| BUG-06 | Login accepts malformed email-like usernames without field validation | TC-005 to TC-008, [bug report](bug-reports/BUG-06.md) |
+| BUG-07 | Navbar password input has no accessible name or placeholder | TC-003, [bug report](bug-reports/BUG-07.md) |
+| BUG-08 | Enabled Register button has no hover visual state | TC-029, [bug report](bug-reports/BUG-08.md) |
+| BUG-09 | Login rejects usernames with leading or trailing spaces | TC-009, [bug report](bug-reports/BUG-09.md) |
+| BUG-10 | Successful login does not create a session cookie | TC-021 and TC-025, [bug report](bug-reports/BUG-10.md) |
+| BUG-11 | Logout from Overall Rating leaves the user logged in | TC-027, [bug report](bug-reports/BUG-11.md) |
+| BUG-12 | Login rejects uppercase usernames | TC-010, [bug report](bug-reports/BUG-12.md) |
 
-## Other Scenarios Covered
+The live navbar password field has no show-password eye control. The current automated suite does not test a show-password control. Bug reports note that screenshots could not be captured because the browser screenshot tools timed out waiting for page fonts.
 
-- Login with valid credentials
-- Login with wrong password / unknown username / empty fields
-- Login with a second account
-- Login button colour change on hover
-- Show-password (eye) icon visibility
+## Stack and Structure
 
-## Tech Stack
+- Playwright Test with TypeScript (`@playwright/test`)
+- `dotenv` loads local credentials from `.env` through `playwright.config.ts`
+- Playwright MCP configuration for agent-driven browser exploration
 
-- [Playwright](https://playwright.dev/) with TypeScript (`@playwright/test`)
-- VS Code + GitHub Copilot (Agent mode)
-- [Playwright MCP](https://github.com/microsoft/playwright-mcp) for agent-driven exploration and test generation
-- `dotenv` for credentials
-
-## Project Structure
-
-```
+```text
 .
-├── .github/
-│   └── copilot-instructions.md   # Context/instructions for the test-generator agent
-├── .vscode/
-│   └── mcp.json                  # Playwright MCP server config
-├── bug-reports/                  # Written bug reports (BUG-XX.md)
-├── reports/                      # Generated HTML/JSON test reports
-├── tests/                        # Playwright test files
-├── .env.example                  # Template for credentials (copy to .env)
+├── .env.examples                 # Credential template; copy to .env
+├── .github/copilot-instructions.md
+├── .vscode/mcp.json               # Playwright MCP server configuration
+├── bug-reports/                   # Confirmed BUG-XX reports
+├── tests/
+│   ├── example.spec.ts            # Playwright documentation smoke tests
+│   ├── login.spec.ts              # TC-002 through TC-027
+│   └── register.spec.ts           # TC-028 and TC-029
+├── package.json
+├── package-lock.json
 ├── playwright.config.ts
-└── README.md
+└── README.MD
 ```
+
+Playwright's generated HTML report is written to `playwright-report/`; test artifacts are written to `test-results/`. Both output directories are ignored by Git.
 
 ## Setup
 
-### Prerequisites
-
-- Node.js 20+
-- Git
-- VS Code with the *Playwright Test for VS Code* extension and GitHub Copilot
-
-### Install
+Requirements: Node.js and npm.
 
 ```bash
-git clone https://github.com/<your-username>/buggy-cars-playwright.git
-cd buggy-cars-playwright
-npm install
+git clone https://github.com/faiyaz029/sqa_Manual_and_auto_test_BuggyCarsRating.git
+cd sqa_Manual_and_auto_test_BuggyCarsRating
+npm ci
 npx playwright install
+cp .env.examples .env
 ```
 
-### Configure credentials
+Set `BUGGY_USER` and `BUGGY_PASS` in `.env` to a valid account. The credential-dependent tests skip when credentials are missing or do not authenticate. TC-010 also needs a lowercase username, and TC-011 needs a password containing a special character. `.env.examples` includes optional `BUGGY_USER2` and `BUGGY_PASS2` values, but the current tests do not use a second account. `.env` is ignored by Git; never commit real credentials.
 
-Credentials are kept in a local `.env` file that is **never committed** (it is listed in `.gitignore`).
+## Run Tests
+
+The Playwright configuration defines Chromium, Firefox, and WebKit projects. There are no custom npm scripts; run the tests with `npx`:
 
 ```bash
-cp .env.example .env
+npx playwright test                              # all tests in all three projects
+npx playwright test tests/login.spec.ts          # login cases in all three projects
+npx playwright test --project=chromium           # Chromium only
+npx playwright test --project=firefox            # Firefox only
+npx playwright test --project=webkit             # WebKit only
+npx playwright test --ui                         # interactive UI mode
+npx playwright test --debug                       # step-through debugging
+npx playwright show-report                        # open the HTML report
 ```
 
-Then edit `.env`:
+## MCP Exploration
 
-```
-BUGGY_USER=your_username
-BUGGY_PASS=your_password
-# Optional second account for the "another login" test
-BUGGY_USER2=second_username
-BUGGY_PASS2=second_password
-```
-
-> Never commit real credentials. Run `git status` before committing to confirm `.env` is not listed.
-
-## Running Tests
-
-```bash
-npx playwright test                         # run everything (Chromium + Firefox)
-npx playwright test tests/login.spec.ts     # run one file
-npx playwright test --project=chromium      # run on one browser
-npx playwright test --ui                    # interactive UI mode
-npx playwright test --debug                 # step-through debugging
-```
-
-## Reports and Error Output
-
-| Output | Location |
-|--------|----------|
-| HTML report | `reports/html/` (open with `npx playwright show-report reports/html`) |
-| JSON results | `reports/results.json` |
-| Screenshots, videos, traces (on failure) | `test-results/` |
-| Written bug reports | `bug-reports/` |
-
-## Using the MCP Agent
-
-1. Open the project in VS Code and start the `playwright` server from `.vscode/mcp.json`.
-2. Open Copilot Chat in **Agent** mode.
-3. Give it one scenario at a time, for example:
-
-   > Scenario: BUG-05 — On the Register form, Age = 0 should show a proper validation message but shows "Unknown Error". Follow copilot-instructions.md: run the steps with Playwright MCP first, then write the test in `tests/`, run it, and iterate until it passes.
-
-The agent follows the rules in `.github/copilot-instructions.md`:
-
-1. Do not generate test code from the scenario alone.
-2. Run the steps one by one using the Playwright MCP tools.
-3. Only after all steps are completed, emit a Playwright TypeScript test using `@playwright/test`.
-4. Save the test in the `tests/` directory.
-5. Execute the test and iterate until it passes.
-
-Always review generated tests: confirm the assertion matches the behaviour you expect from the application.
-
-## Conventions
-
-- Prefer `getByRole`, `getByLabel`, `getByPlaceholder`, `getByText` locators.
-- No hard waits (`waitForTimeout`); use auto-waiting and web-first assertions.
-- One scenario per test; tests are independent of each other.
-- Test names start with the bug ID, e.g. `BUG-02: session cookie is set after login`.
-- Real UI login is used in login/session tests so Bug 02 and Bug 08 are not hidden by saved sessions.
-
-## Contributing / Workflow
-
-```bash
-git checkout -b add-<scenario>-test
-# write / generate the test, run it, add a bug report if needed
-git add .
-git commit -m "Add <scenario> test"
-git push -u origin add-<scenario>-test
-```
+The repository instructions in `.github/copilot-instructions.md` require exploring each scenario with Playwright MCP and observing real page locators and behavior before generating a test. The MCP server is configured in `.vscode/mcp.json`. Review generated tests to ensure each assertion matches the intended behavior and each confirmed defect has a corresponding report.
 
 ## Disclaimer
 
-Buggy Cars Rating is a public practice application built for testers. This project is for learning and portfolio purposes only.
+Buggy Cars Rating is a public practice application for testers. This project is for learning and portfolio use.
